@@ -38,7 +38,7 @@ namespace CommunityApiV2.Services
             return user.Id;
         }
 
-        public async Task<int> RegisterAsync(User user)
+        public async Task<int> CreateAsync(User user)
         {
             var existingUser = await _userRepository.GetByUsernameAsync(user.Username);
 
