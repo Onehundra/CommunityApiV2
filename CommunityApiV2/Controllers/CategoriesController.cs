@@ -1,4 +1,5 @@
-﻿using CommunityApiV2.Services.Interfaces;
+﻿using CommunityApiV2.Models;
+using CommunityApiV2.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -24,6 +25,17 @@ namespace CommunityApiV2.Controllers
             var categories = _categoryService.GetAllAsync();
             return Ok(categories);
         }
+
+        [HttpPost]
+        [SwaggerOperation(Summary = "Skapa ny kategori", Description ="Skapar en ny kategori i databasen")]
+        [SwaggerResponse(200, "Kategorin skapades")]
+        public async Task<IActionResult> Create([FromBody] Category category)
+        {
+            await _categoryService.CreateAsync(category);
+            return Ok("Category created succesfully");
+        }
+
+
 
 
     }
