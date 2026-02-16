@@ -22,7 +22,7 @@ namespace CommunityApiV2.Controllers
         [SwaggerResponse(200,"Lista med kategorier returnerades")]
         public async Task<IActionResult> GetAll()
         {
-            var categories = _categoryService.GetAllAsync();
+            var categories = await _categoryService.GetAllAsync();
             return Ok(categories);
         }
 

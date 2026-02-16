@@ -29,7 +29,7 @@ namespace CommunityApiV2.Controllers
         }
 
 
-        [HttpPost("/register")]
+        [HttpPost("register")]
         [SwaggerOperation(Summary = "Registrera ny användare", Description = "Skapar nytt användarkonto.")]
         [SwaggerResponse(200,"Användare skapad och returnerar dess id")]
         [SwaggerResponse(400,"Användarnamnet är upptaget")]
@@ -44,7 +44,7 @@ namespace CommunityApiV2.Controllers
         }
 
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         [SwaggerOperation(Summary = "Logga in användare", Description ="Verifierar username och password och returnerar användarens id")]
         [SwaggerResponse(200,"Inlogging lyckades och användarens id returneras")]
         [SwaggerResponse(401,"Fel användarnamn eller lösenord")]
@@ -59,7 +59,7 @@ namespace CommunityApiV2.Controllers
         }
 
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         [SwaggerOperation(Summary = "Hämta användare via id", Description = "Returnerar den användare med valt id.")]
         [SwaggerResponse(200,"Användare hittad")]
         [SwaggerResponse(404,"Användare kunde inte hittas")]
@@ -73,7 +73,7 @@ namespace CommunityApiV2.Controllers
             return Ok(user);
         }
 
-        [HttpPut("/{id}")]
+        [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Uppdatera en användare", Description ="Uppdatera username/password/email för en användare.")]
         [SwaggerResponse(200,"Användare uppdaterad")]
         [SwaggerResponse(404,"Användare kunde inte hittas")]
@@ -87,7 +87,7 @@ namespace CommunityApiV2.Controllers
             return Ok("User was updated");
         }
 
-        [HttpDelete("/{id}")]
+        [HttpDelete("{id}")]
         [SwaggerOperation(Summary = "Ta bort användare", Description ="Tar bort användare via id.")]
         [SwaggerResponse(200,"Användare togs bort")]
         [SwaggerResponse(404,"Användare kunde inte hittas")]

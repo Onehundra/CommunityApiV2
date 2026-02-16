@@ -51,37 +51,37 @@ namespace CommunityApiV2.Services
             return true;
         }
         
-        public async Task<bool> UpdateAsync(int id, int userId, BlogPost updatedPost)
+        public async Task<string> UpdateAsync(int id, int userId, BlogPost updatedPost)
         {
             var existingPost = await _blogPostRepository.GetByIdAsync(id);
 
             if (existingPost == null)
-                return false;
+                return "NotFound";
 
             if (existingPost.UserId != userId)
-                return false;
+                return "Forbid";
 
             existingPost.Title = updatedPost.Title;
             existingPost.Text = updatedPost.Text;
             existingPost.CategoryId = updatedPost.CategoryId;
 
             await _blogPostRepository.UpdateAsync(existingPost);
-            return true;
+            return "Success";
         }
 
-        public async Task<bool> DeleteAsync(int id, int userId)
+        public async Task<string> DeleteAsync(int id, int userId)
         {
             var existingPost = await _blogPostRepository.GetByIdAsync(id);
 
             if (existingPost == null)
-                return false;
+                return "NotFound";
 
             if (existingPost.UserId != userId)
-                return false;
+                return "Forbid";
 
             await _blogPostRepository.DeleteAsync(existingPost);
 
-            return true;
+            return "Success";
         }
     }
 }
